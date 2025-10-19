@@ -1,4 +1,6 @@
-let array = [1, 54, 9, "g", true, 5, "gfr", 5, false]
-for (let i = 0; i < array.length; i++) {
-    console.log(array[i])
+let sentence = ["Hello ", "my ", "name ", "is ", "Ugur"]
+let greetingEl = document.querySelector("#greeting-el")
+
+for (let i = 0; i <= sentence.length - 1; i++) {
+    greetingEl.textContent += sentence[i]
 }
