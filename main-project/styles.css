@@ -15,7 +15,7 @@ h1 {
     font-style: italic;
 }
 
-#start-game-btn {
+.start-game-btn {
     background: rgb(220, 173, 54);
     border-radius: 5px;
     border: none;
@@ -23,4 +23,12 @@ h1 {
     width: 150px;
     font-weight: bold;
     color: #016f32;
+    margin: 3px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
