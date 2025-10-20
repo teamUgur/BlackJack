@@ -1,6 +1,8 @@
-let sentence = ["Hello ", "my ", "name ", "is ", "Ugur"]
-let greetingEl = document.querySelector("#greeting-el")
+let hasCompletedCourse = false
+let givesCerificate = true
 
-for (let i = 0; i <= sentence.length - 1; i++) {
-    greetingEl.textContent += sentence[i]
+if (hasCompletedCourse && givesCerificate) {
+    console.log("Printing.....")
+} else {
+    console.log("Error.....")
 }

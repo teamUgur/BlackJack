@@ -1,23 +1,46 @@
-let firstCard = 3
-let secondCard = 7
-let cards = [firstCard, secondCard]
-let sum = firstCard + secondCard
+let cards = []
+let sum = 0
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = ""
-
-console.log(message)
 
 let messageEl = document.getElementById("messageEl")
 let sumEl = document.querySelector("#sumEl")
 let cardEl = document.querySelector("#cardEl")
 
+let player = {
+    name: "Ugur",
+    chips: 145
+}
+
+let playerNameEl = document.querySelector("#player-el")
+playerNameEl.textContent = player.name + ": $" + player.chips
+
+function getRandom() {
+    let randomNumber = Math.floor(Math.random() * 13) + 1
+    if (randomNumber === 1) {
+        return 11
+    } else if (randomNumber > 10) {
+        return 10
+    } else {
+        return randomNumber
+    }
+}
+
 function startGame() {
+    let firstCard = getRandom()
+    let secondCard = getRandom()
+    sum = firstCard + secondCard
+    isAlive = true
+    cards.push(firstCard, secondCard)
     renderGame()
 }
 
 function renderGame() {
-    cardEl.textContent = "Cards: " + cards[0] + " " + cards[1]
+    cardEl.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardEl.textContent += cards[i] + " "
+    }
     sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
@@ -32,22 +55,15 @@ function renderGame() {
 }
 
 function newCard() {
-    let thirdCard = 11
-    sum += thirdCard
-    cards.push(thirdCard)
-    console.log("Drawing a new card from the deck")
-    cardEl.textContent = "Cards: " + cards[0] + " " + cards[1] + " " + thirdCard
-    sumEl.textContent = "Sum: " + sum
-    if (sum <= 20) {
-        message = "Do you want to draw a new card?"
-    } else if (sum === 21) {
-        message = "Wohoo! You've got BlackJAck!"
-        hasBlackJack = true
+    if (hasBlackJack === false && isAlive) {
+        let thirdCard = getRandom()
+        sum += thirdCard
+        cards.push(thirdCard)
+        renderGame()
     } else {
-        message = "You are out of the game"
-        isAlive =  false
+        let len = cards.length - 1
+        cards.splice(0, len)
     }
-    messageEl.textContent = message
 }
 
 
